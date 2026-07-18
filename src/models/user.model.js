@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const userSchema = new mongoose.Schema({
-    userName: {
+    username: {
         type: String,
         required: true,
         unique: true,
@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
         trim: true,
         index: true,
     },
-    avtar: {
+    avatar: {
         type: String,
         required: true,
     },
@@ -60,7 +60,7 @@ userSchema.methods.generateAccessToken = function () {
     return jwt.sign(
         {
             _id: this._id,
-            userName: this.userName,
+            username: this.username,
             email: this.email,
             fullName: this.fullName,
         }, 
